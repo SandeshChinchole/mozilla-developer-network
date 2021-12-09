@@ -1,5 +1,7 @@
-function oddEven(num) {
-    return (num % 2 === 0) ? 'number is even' : 'number is odd';
+function oddEven(num1, num2) {
+    return num1 === num2 ? 'both are equal' 
+    : num1 > num2 ? 'num1 is greater than num2'
+    : 'num2 is greater than num1';
 }
 
-console.log(5)
+console.log(5, 3)
