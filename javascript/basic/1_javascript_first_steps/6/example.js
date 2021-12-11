@@ -1,3 +1,3 @@
-const doubler = num => num * 2;
-
-console.log(doubler(2));
+const myPromise = new Promise((resolve, reject) => {
+    
+});
