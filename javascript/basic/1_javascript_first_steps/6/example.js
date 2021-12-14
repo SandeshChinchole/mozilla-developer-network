@@ -1,8 +1,8 @@
 const myPromise = new Promise((resolve, reject) => {
     if (condotion) {
-        resolve('promise is resolved')
+        resolve('the promise is resolved')
     } else {
-        reject('promise is rejected')
+        reject('the promise is rejected')
     }
 
     myPromise.then(result => {
