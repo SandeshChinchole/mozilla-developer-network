@@ -1,7 +1,11 @@
-let str = 'kayak';
-let reverseStr = str.split('').reverse().join('');
-if (str === reverseStr) {
-    console.log('palindrome')
-} else {
-    console.log('not p')
+const myObj = {
+    name: 'Steve',
+    age: 2,
+    friends: ['Ricky', 'Bill', 'Elon']
 }
+
+Object.freeze(myObj);
+
+myObj.location = 'NYC';
+
+console.log(myObj);
