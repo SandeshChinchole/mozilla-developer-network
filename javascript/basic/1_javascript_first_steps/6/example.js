@@ -7,5 +7,6 @@ const myObj = {
 Object.freeze(myObj);
 
 myObj.location = 'NYC';
+myObj.email = 'email@email.com';
 
 console.log(myObj);
