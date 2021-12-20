@@ -1,12 +1,5 @@
-const myObj = {
-    name: 'Steve',
-    age: 2,
-    friends: ['Ricky', 'Bill', 'Elon']
+function endsWith(str, target) {
+    return str.slice(str.length - target.length) === target;
 }
 
-Object.freeze(myObj);
-
-myObj.location = 'NYC';
-myObj.email = 'email@email.com';
-
-console.log(myObj);
+console.log(endsWith('hello people', 'o'));
