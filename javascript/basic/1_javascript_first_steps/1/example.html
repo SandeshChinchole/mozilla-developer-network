@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Example</title>
+    <title>Document</title>
     <style>
         p {
             font-family: 'helvetica neue', helvetica, sans-serif;
@@ -24,12 +24,12 @@
 </head>
 <body>
     <p>Player 1: Bill</p>
-    
+
     <script>
         const para = document.querySelector('p');
         para.addEventListener('click', updateName);
-        function updateName(){
-            let name = prompt('Enter a name');
+        function updateName() {
+            let name = prompt("enter name");
             para.textContent = 'Player 1: ' + name;
         }
     </script>
