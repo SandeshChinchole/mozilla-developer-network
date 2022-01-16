@@ -1,5 +1,7 @@
-function endsWith(str, target) {
-    return str.slice(str.length - target.length) === target;
+function greaterThan(a, b) {
+    return (a === b) ? 'a and b are equal'
+    : (a > b) ? 'a is greater than b'
+    : 'b is greater than a';
 }
 
-console.log(endsWith('NYC', 'k'));
+console.log(greaterThan(5,4));
