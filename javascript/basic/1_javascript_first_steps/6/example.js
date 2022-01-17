@@ -1,7 +1,9 @@
-function greaterThan(a, b) {
-    return (a === b) ? 'a and b are equal'
-    : (a > b) ? 'a is greater than b'
-    : 'b is greater than a';
+function rangeOfNumbers(startNum, endNum) {
+    if (n < 1) {
+        return [startNum];
+    } else {
+        const numArr = rangeOfNumbers(startNum, endNum-1);
+        numArr.push(endNum);
+        return numArr;
+    }
 }
-
-console.log(greaterThan(5,4));
