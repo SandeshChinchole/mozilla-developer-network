@@ -1,9 +1,9 @@
-function rangeOfNumbers(startNum, endNum) {
-    if (n < 1) {
-        return [startNum];
-    } else {
-        const numArr = rangeOfNumbers(startNum, endNum-1);
-        numArr.push(endNum);
-        return numArr;
-    }
+const numbers = [1, 2, 3, 4, 5];
+function queue(arr, num) {
+    arr.push(num);
+    let removed = arr.shift();
+    return removed;
 }
+
+console.log(queue(numbers, 6));
+console.log('after: ' + JSON.stringify(numbers));
