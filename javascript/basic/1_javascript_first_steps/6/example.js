@@ -6,5 +6,5 @@ function queue(arr, num) {
 }
 
 console.log('before: ' + JSON.stringyfy(numbers));
-console.log(queue(numbers, 6));
+console.log(queue(numbers, 10));
 console.log('after: ' + JSON.stringify(numbers));
