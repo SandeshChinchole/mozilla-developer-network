@@ -1,10 +1,7 @@
-const numbers = [1, 2, 3, 4, 5];
-function queue(arr, num) {
-    arr.push(num);
-    let removed = arr.shift();
-    return removed;
+function isEqual(a, b) {
+    return a === b ? 'a and b are equal'
+    : a > b ? 'a is greater than b'
+    : 'b is greater than a';
 }
 
-console.log('before: ' + JSON.stringyfy(numbers));
-console.log(queue(numbers, 10));
-console.log('after: ' + JSON.stringify(numbers));
+console.log(isEqual(10, 5));
