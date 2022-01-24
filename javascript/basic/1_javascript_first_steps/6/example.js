@@ -1,7 +1,7 @@
 function isEqual(a, b) {
-    return a === b ? 'a and b are equal'
-    : a > b ? 'a is greater than b'
-    : 'b is greater than a';
+    return a === b ? `${a} and ${b} are equal`
+    : a > b ? `${a} is greater than ${b}`
+    : `${b} is greater than ${a}`;
 }
 
 console.log(isEqual(10, 5));
