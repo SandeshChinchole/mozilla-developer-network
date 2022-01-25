@@ -1,7 +1,24 @@
-function isEqual(a, b) {
-    return a === b ? `${a} and ${b} are equal`
-    : a > b ? `${a} is greater than ${b}`
-    : `${b} is greater than ${a}`;
-}
 
-console.log(isEqual(10, 5));
+const rootElement = document.getElementById('root');
+
+function Greeting() {
+    const [name, setName] = React.useState(
+        () => window.localStorage.getItem('name') || ''
+    );
+    const handleChange = event => setName(event.target.value);
+
+    React.useEffect(() => {
+        window.localStorage.setItem('name', name);
+    });
+
+    return (
+        <div>
+            <form>
+                <label htmlFor="name">Name: </label>
+                <input value={name} onChange={handleChange} id="name" />
+            </form>
+            {name ? <strong>{name}</strong> : 'Please enter a name'}
+        </div>
+    )
+}
+ReactDOM.render(<Greeting />, rootElement);
