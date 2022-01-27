@@ -1,4 +1,6 @@
-const element = (
+
+function showHide() {
+  const element = (
     <>
       <label>
         <input
@@ -21,3 +23,5 @@ const element = (
       </div>
     </>
   )
+  
+}
