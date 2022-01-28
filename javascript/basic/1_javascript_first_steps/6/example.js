@@ -21,6 +21,7 @@ function showHide() {
       >
         {showChild ? showChild : null}
       </div>
+      <button type="submit">Submit</button>
     </>
   )
   
