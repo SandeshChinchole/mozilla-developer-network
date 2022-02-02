@@ -1,27 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const UseStateCounter = () => {
-  const [value, setValue] = useState(0);
+const url = 'https://api.github.com/users';
 
-  const handleReset = () => setValue(0);
-
-  return (
-    <>
-      <section style={{ margin: '4rem 0' }}>
-        <h1>regular counter</h1>
-        <h2>{value}</h2>
-        <button className='btn' onClick={() => setValue(value - 1)}>
-          decrease
-        </button>
-        <button className='btn' onClick={handleReset}>
-          reset
-        </button>
-        <button className='btn' onClick={() => setValue(value + 1)}>
-          increase
-        </button>
-      </section>
-    </>
-  );
+const UseEffectFetchData = () => {
+  return <h2>fetch dta</h2>;
 };
 
-export default UseStateCounter;
+export default UseEffectFetchData;
