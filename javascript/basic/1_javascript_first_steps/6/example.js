@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import Setup from './tutorial/1-useState/setup/1-error-example';
 
-const url = 'https://api.github.com/users';
+function App() {
+  return (
+    <div className='container'>
+      <Setup />
+    </div>
+  );
+}
 
-const UseEffectFetchData = () => {
-  return <h2>fetch dta</h2>;
-};
-
-export default UseEffectFetchData;
+export default App;
