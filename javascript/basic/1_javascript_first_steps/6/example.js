@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { data } from '../../../data';
 // more components
 // fix - context api, redux (for more complex cases)
 
-const PropDrilling = () => {
+const ContextAPI = () => {
   const [people, setPeople] = useState(data);
   const removePerson = (id) => {
     setPeople((people) => {
@@ -11,10 +11,10 @@ const PropDrilling = () => {
     });
   };
   return (
-    <section>
+    <>
       <h3>prop drilling</h3>
       <List people={people} removePerson={removePerson} />
-    </section>
+    </>
   );
 };
 
@@ -43,4 +43,4 @@ const SinglePerson = ({ id, name, removePerson }) => {
   );
 };
 
-export default PropDrilling;
+export default ContextAPI;
