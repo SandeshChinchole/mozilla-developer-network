@@ -1,46 +1,28 @@
-import React, { useState, useContext } from 'react';
-import { data } from '../../../data';
-// more components
-// fix - context api, redux (for more complex cases)
+import React, { useState, useEffect } from 'react';
+import { useFetch } from './2-useFetch';
 
-const ContextAPI = () => {
-  const [people, setPeople] = useState(data);
-  const removePerson = (id) => {
-    setPeople((people) => {
-      return people.filter((person) => person.id !== id);
-    });
+const url = 'https://course-api.com/javascript-store-products';
+
+const Example = () => {
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([]);
+
+  const getProducts = async () => {
+    const response = await fetch(url);
+    const products = await response.json();
+    setProducts(products);
+    setLoading(false);
   };
-  return (
-    <>
-      <h3>prop drilling</h3>
-      <List people={people} removePerson={removePerson} />
-    </>
-  );
-};
 
-const List = ({ people, removePerson }) => {
+  useEffect(() => {
+    getProducts();
+  }, [url]);
+  console.log(products);
   return (
-    <>
-      {people.map((person) => {
-        return (
-          <SinglePerson
-            key={person.id}
-            {...person}
-            removePerson={removePerson}
-          />
-        );
-      })}
-    </>
-  );
-};
-
-const SinglePerson = ({ id, name, removePerson }) => {
-  return (
-    <div className='item'>
-      <h4>{name}</h4>
-      <button onClick={() => removePerson(id)}>remove</button>
+    <div>
+      <h2>{loading ? 'loading...' : 'data'}</h2>
     </div>
   );
 };
 
-export default ContextAPI;
+export default Example;
