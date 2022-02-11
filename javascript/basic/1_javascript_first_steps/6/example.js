@@ -1,12 +1,19 @@
-import React from 'react';
-import Setup from './tutorial/9-custom-hooks/setup/1-fetch-example';
+import { useState, useEffect } from 'react';
 
-function App() {
-  return (
-    <div className='container'>
-      <Setup />
-    </div>
-  );
-}
+export const useFetch = (url) => {
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([]);
 
-export default App;
+  const getProducts = async () => {
+    const response = await fetch(url);
+    const products = await response.json();
+    setProducts(products);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, [url]);
+
+  return { loading, products };
+};
