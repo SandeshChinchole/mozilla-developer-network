@@ -1,19 +1,29 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import defaultImage from '../../../assets/default-image.jpeg';
 
-export const useFetch = (url) => {
-  const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState([]);
+const Product = ({ name, price, image }) => {
+  const url = image && image.url;
 
-  const getProducts = async () => {
-    const response = await fetch(url);
-    const products = await response.json();
-    setProducts(products);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    getProducts();
-  }, [url]);
-
-  return { loading, products };
+  return (
+    <article className='product'>
+      <img src={url || defaultImage} alt={name || 'default name'} />
+      <h4>{name}</h4>
+      <p>${price || 3.99}</p>
+    </article>
+  );
 };
+
+Product.propTypes = {
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  image: PropTypes.object.isRequired,
+};
+
+// Product.defaultProps = {
+//   name: 'default name',
+//   price: 3.99,
+//   image: defaultImage,
+// };
+
+export default Product;
