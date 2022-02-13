@@ -1,29 +1,35 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import defaultImage from '../../../assets/default-image.jpeg';
+// react router
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// pages
+import Home from './Home';
+import About from './About';
+import People from './People';
+import Error from './Error';
+import Person from './Person';
+// navbar
+import Navbar from './Navbar';
 
-const Product = ({ name, price, image }) => {
-  const url = image && image.url;
-
+const ReactRouterSetup = () => {
   return (
-    <article className='product'>
-      <img src={url || defaultImage} alt={name || 'default name'} />
-      <h4>{name}</h4>
-      <p>${price || 3.99}</p>
-    </article>
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route exact path='/'>
+          <Home />
+        </Route>
+        <Route path='/about'>
+          <About />
+        </Route>
+        <Route path='/people'>
+          <People />
+        </Route>
+        <Route path='*'>
+          <Error />
+        </Route>
+      </Switch>
+    </Router>
   );
 };
 
-Product.propTypes = {
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  image: PropTypes.object.isRequired,
-};
-
-// Product.defaultProps = {
-//   name: 'default name',
-//   price: 3.99,
-//   image: defaultImage,
-// };
-
-export default Product;
+export default ReactRouterSetup;
