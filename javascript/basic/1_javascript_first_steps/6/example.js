@@ -1,35 +1,69 @@
-import React from 'react';
-// react router
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// pages
-import Home from './Home';
-import About from './About';
-import People from './People';
-import Error from './Error';
-import Person from './Person';
-// navbar
-import Navbar from './Navbar';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { useFetch } from '../../9-custom-hooks/final/2-useFetch';
 
-const ReactRouterSetup = () => {
+// ATTENTION!!!!!!!!!!
+// I SWITCHED TO PERMANENT DOMAIN
+const url = 'https://course-api.com/javascript-store-products';
+
+// every time props or state changes, component re-renders
+
+const Index = () => {
+  const { products } = useFetch(url);
+  const [count, setCount] = useState(0);
+  const [cart, setCart] = useState(0);
+
+  const addToCart = useCallback(() => {
+    setCart(cart + 1);
+  }, [cart]);
+
   return (
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route exact path='/'>
-          <Home />
-        </Route>
-        <Route path='/about'>
-          <About />
-        </Route>
-        <Route path='/people'>
-          <People />
-        </Route>
-        <Route path='*'>
-          <Error />
-        </Route>
-      </Switch>
-    </Router>
+    <>
+      <h1>Count : {count}</h1>
+      <button className='btn' onClick={() => setCount(count + 1)}>
+        click me
+      </button>
+      <h1 style={{ marginTop: '3rem' }}>Cart: {cart}</h1>
+      <BigList products={products} addToCart={addToCart} />
+    </>
   );
 };
 
-export default ReactRouterSetup;
+const BigList = React.memo(({ products, addToCart }) => {
+  useEffect(() => {
+    console.log('big list called');
+  });
+
+  return (
+    <section className='products'>
+      {products.map((product) => {
+        return (
+          <SingleProduct
+            key={product.id}
+            {...product}
+            addToCart={addToCart}
+          ></SingleProduct>
+        );
+      })}
+    </section>
+  );
+});
+
+const SingleProduct = ({ fields, addToCart }) => {
+  useEffect(() => {
+    console.count('single product called');
+  });
+
+  let { name, price } = fields;
+  price = price / 100;
+  const image = fields.image[0].url;
+
+  return (
+    <article className='product'>
+      <img src={image} alt={name} />
+      <h4>{name}</h4>
+      <p>${price}</p>
+      <button onClick={addToCart}>Add to Cart</button>
+    </article>
+  );
+};
+export default Index;
