@@ -1,26 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+// import './styles/styles.css';
+import logo from './images/usb-logo.svg';
+import data from './data/employees.json';
+import Customer from './components/Customer';
+import BankEmployee from './components/BankEmployee';
 
-// 1. filter employees from /data/employees.json to only display bankers
-// 2. sort bankers by satisfationRating
-
-const BankEmployee = (props) => {
-  const bankerFilter = props.user.type === 'banker';
-
+export default function App() {
   return (
-    <div>
-      {bankerFilter && (
-        <div className='bank-employee'>
-          <h1>{props.children}</h1>
-          <span>{props.user.userName}</span>
-          <br />
-          <span>Name: {props.user.name}</span>
-          <br />
-          <span>
-            Customer Satisfaction Rating: {props.user.satisfactionRating}
-          </span>
-        </div>
-      )}
-    </div>
+    <>
+      <div className='logo-container'>
+        <img src={logo} alt='U.S Bank logo' />
+      </div>
+      <div>
+        {/* Add and debug Customer component */}
+        <h1>Customer</h1>
+        <Customer userName='x1234' name='Firstname Lastname' />
+        {/* Add filtered bank employees do display only bankers */}
+        <h1>Employees</h1>
+        {data.map((user) => {
+          return <BankEmployee key={user.id} user={user} />;
+        })}
+      </div>
+      <div>
+        <p>&copy; 2021 U.S.Bank</p>
+      </div>
+    </>
   );
-};
-export default React.memo(BankEmployee);
+}
