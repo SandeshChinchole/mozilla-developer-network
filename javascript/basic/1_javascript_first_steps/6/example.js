@@ -1,29 +1,49 @@
-import React from 'react';
-// import './styles/styles.css';
-import logo from './images/usb-logo.svg';
-import data from './data/employees.json';
-import Customer from './components/Customer';
-import BankEmployee from './components/BankEmployee';
+import React, { useState, useReducer } from 'react';
+import Modal from './Modal';
+import { data } from '../../../data';
+// reducer function
 
-export default function App() {
+const reducer = (state, action) => {};
+
+const defaultState = {
+  people: [],
+  isModalOpen: false,
+  modalContent: '',
+};
+
+const Index = () => {
+  const [name, setName] = useState('');
+  const [state, dispatch] = useReducer(reducer, defaultState);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (name) {
+    } else {
+    }
+  };
+
   return (
     <>
-      <div className='logo-container'>
-        <img src={logo} alt='U.S Bank logo' />
-      </div>
-      <div>
-        {/* Add and debug Customer component */}
-        <h1>Customer</h1>
-        <Customer userName='x1234' name='Firstname Lastname' />
-        {/* Add filtered bank employees do display only bankers */}
-        <h1>Employees</h1>
-        {data.map((user) => {
-          return <BankEmployee key={user.id} user={user} />;
-        })}
-      </div>
-      <div>
-        <p>&copy; 2021 U.S.Bank</p>
-      </div>
+      {state.isModalOpen && <Modal modalContent={state.modalContent} />}
+      <form onSubmit={handleSubmit} className='form'>
+        <div>
+          <input
+            type='text'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <button type='submit'>add</button>
+      </form>
+      {state.people.map((person) => {
+        return (
+          <div key={person.id}>
+            <h4>{person.name}</h4>
+          </div>
+        );
+      })}
     </>
   );
-}
+};
+
+export default Index;
