@@ -3,7 +3,18 @@ import Modal from './Modal';
 import { data } from '../../../data';
 // reducer function
 
-const reducer = (state, action) => {};
+const reducer = (state, action) => {
+  console.log(state);
+  if (action.type === 'TESTING') {
+    return {
+      ...state,
+      people: data,
+      isModalOpen: true,
+      modalContent: 'Item Added',
+    };
+  }
+  throw new Error('No matching action type');
+};
 
 const defaultState = {
   people: [],
@@ -18,7 +29,9 @@ const Index = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name) {
+      dispatch({ type: 'TESTING' });
     } else {
+      dispatch({ type: 'RANDOM' });
     }
   };
 
