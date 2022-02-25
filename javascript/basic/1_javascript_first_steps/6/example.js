@@ -1,65 +1,34 @@
-import React, { useState, useReducer } from 'react';
-import Modal from './Modal';
-import { data } from '../../../data';
-// reducer function
-import { reducer } from './reducer';
+import { useEffect, useState } from 'react';
+import { data } from './data';
+const url = 'https://api.github.com/users';
 
-const defaultState = {
-  people: [],
-  isModalOpen: false,
-  modalContent: '',
-};
+const App = () => {
+  const [person, setPerson] = useState({
+    name: 'Peter',
+    age: 21,
+    message: 'random message',
+  });
 
-const Index = () => {
-  const [name, setName] = useState('');
-  const [state, dispatch] = useReducer(reducer, defaultState);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (name) {
-      const newItem = { id: new Date().getTime().toString(), name };
-      dispatch({ type: 'ADD_ITEM', payload: newItem });
-      setName('');
+  const changeMessage = () => {
+    const messageValue = '';
+    if (person.message === 'random message') {
+      messageValue = 'new message';
     } else {
-      dispatch({ type: 'NO_VALUE' });
+      messageValue = 'random message';
     }
-  };
-
-  const closeModal = () => {
-    dispatch({ type: 'CLOSE_MODAL' });
+    setPerson({ ...person, message: `${messageValue}` });
   };
 
   return (
     <>
-      {state.isModalOpen && (
-        <Modal closeModal={closeModal} modalContent={state.modalContent} />
-      )}
-      <form onSubmit={handleSubmit} className='form'>
-        <div>
-          <input
-            type='text'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <button type='submit'>add</button>
-      </form>
-      {state.people.map((person) => {
-        return (
-          <div key={person.id} className='item'>
-            <h4>{person.name}</h4>
-            <button
-              onClick={() => {
-                dispatch({ type: 'REMOVE_ITEM', payload: person.id });
-              }}
-            >
-              remove
-            </button>
-          </div>
-        );
-      })}
+      <h4>{person.name}</h4>
+      <h4>{person.age}</h4>
+      <h4>{person.message}</h4>
+      <button className='btn' onClick={changeMessage}>
+        change message
+      </button>
     </>
   );
 };
 
-export default Index;
+export default App;
