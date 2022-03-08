@@ -12,7 +12,7 @@ const App = () => {
   const changeMessage = () => {
     const messageValue = '';
     if (person.message === 'default message') {
-      messageValue = 'new message';
+      messageValue = 'hello world';
     } else {
       messageValue = 'default message';
     }
