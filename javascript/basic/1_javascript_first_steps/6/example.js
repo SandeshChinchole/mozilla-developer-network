@@ -4,8 +4,8 @@ const url = 'https://api.github.com/users';
 
 const App = () => {
   const [person, setPerson] = useState({
-    name: 'Peter',
-    age: 21,
+    name: 'Austin',
+    age: 2,
     message: 'default message',
   });
 
