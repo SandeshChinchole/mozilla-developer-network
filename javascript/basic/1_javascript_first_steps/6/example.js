@@ -5,16 +5,16 @@ const url = 'https://api.github.com/users';
 const App = () => {
   const [person, setPerson] = useState({
     name: 'Austin',
-    age: 2,
-    message: 'default message',
+    age: 21,
+    message: 'good morning',
   });
 
   const changeMessage = () => {
     const messageValue = '';
-    if (person.message === 'default message') {
+    if (person.message === 'good morning') {
       messageValue = 'hello world';
     } else {
-      messageValue = 'default message';
+      messageValue = 'good morning';
     }
     setPerson({ ...person, message: `${messageValue}` });
   };
