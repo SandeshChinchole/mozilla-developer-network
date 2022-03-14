@@ -6,15 +6,15 @@ const App = () => {
   const [person, setPerson] = useState({
     name: 'Austin',
     age: 21,
-    message: 'good morning',
+    message: 'goodbye world',
   });
 
   const changeMessage = () => {
     const messageValue = '';
-    if (person.message === 'good morning') {
+    if (person.message === 'goodbye world') {
       messageValue = 'hello world';
     } else {
-      messageValue = 'good morning';
+      messageValue = 'goodbye world';
     }
     setPerson({ ...person, message: `${messageValue}` });
   };
