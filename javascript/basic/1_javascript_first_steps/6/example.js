@@ -6,6 +6,7 @@ const App = () => {
   const [person, setPerson] = useState({
     name: 'Austin',
     age: 21,
+    email: 'austin@email.com',
     message: 'goodbye world',
   });
 
@@ -23,6 +24,7 @@ const App = () => {
     <>
       <h4>{person.name}</h4>
       <h4>{person.age}</h4>
+      <h4>{person.email}</h4>
       <h4>{person.message}</h4>
       <button className='btn' onClick={changeMessage}>
         change message
