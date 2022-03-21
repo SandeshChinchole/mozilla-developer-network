@@ -7,7 +7,7 @@ const App = () => {
     name: 'Austin',
     age: 21,
     email: 'austin@email.com',
-    location: 'nyc',
+    location: 'new york',
     message: 'goodbye world',
   });
 
