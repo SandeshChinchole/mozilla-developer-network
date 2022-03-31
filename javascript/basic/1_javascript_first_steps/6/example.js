@@ -9,6 +9,7 @@ const App = () => {
     email: 'austin@email.com',
     location: 'USA',
     message: 'goodbye world',
+    occupation: 'student',
   });
 
   const changeMessage = () => {
@@ -28,6 +29,7 @@ const App = () => {
       <h4>{person.email}</h4>
       <h4>{person.location}</h4>
       <h4>{person.message}</h4>
+      <h4>{person.occupation}</h4>
       <button className='btn' onClick={changeMessage}>
         change message
       </button>
