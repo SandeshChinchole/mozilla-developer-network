@@ -8,16 +8,16 @@ const App = () => {
     age: 21,
     email: 'austin@email.com',
     location: 'USA',
-    message: 'goodbye world',
+    message: 'default message',
     occupation: 'student',
   });
 
   const changeMessage = () => {
     const messageValue = '';
-    if (person.message === 'goodbye world') {
+    if (person.message === 'default message') {
       messageValue = 'hello world';
     } else {
-      messageValue = 'goodbye world';
+      messageValue = 'default message';
     }
     setPerson({ ...person, message: `${messageValue}` });
   };
