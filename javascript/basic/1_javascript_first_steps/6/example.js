@@ -9,7 +9,7 @@ const App = () => {
     email: 'john@email.com',
     location: 'New York City',
     message: 'default message',
-    occupation: 'student',
+    occupation: 'Engineer',
   });
 
   const changeMessage = () => {
